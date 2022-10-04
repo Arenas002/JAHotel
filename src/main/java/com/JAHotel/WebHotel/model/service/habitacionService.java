@@ -24,4 +24,9 @@ public class habitacionService {
     return  habitacionRepository.save(habitacion);
     }
 
+    public Habitacion update(Integer id,Habitacion habitacion){
+        habitacion.setId(id);
+        return habitacionRepository.save(habitacion);
+    }
+
 }

@@ -13,16 +13,15 @@ import java.io.Serializable;
 @Entity
 @Data
 @Table(name = "HABITACION")
-public class Habitacion implements Serializable {
+public class Habitacion {
 
-    private static final long serialVersionUID = 1L;
+
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID", nullable = false)
     private Integer Id;
 
-    @Column(name = "TIPOHABITACION", nullable = false, )
+    @Column(name = "TIPOHABITACION", nullable = false)
     private String tipoHabitacion;
 
     @Column(name = "VALOR", nullable = false)
