@@ -1,7 +1,7 @@
-package com.JAHotel.WebHotel.model.domain.service;
+package com.JAHotel.WebHotel.model.service;
 
-import com.JAHotel.WebHotel.model.domain.HABITACION;
-import com.JAHotel.WebHotel.model.domain.repository.habitacionRepository;
+import com.JAHotel.WebHotel.model.domain.Habitacion;
+import com.JAHotel.WebHotel.model.repository.habitacionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,7 +16,12 @@ public class habitacionService {
 
 
     @Transactional(readOnly = true)
-    public List<HABITACION> findAll() {
+    public List<Habitacion> getAll() {
         return habitacionRepository.findAll();
     }
+
+    public Habitacion create( Habitacion habitacion){
+    return  habitacionRepository.save(habitacion);
+    }
+
 }
