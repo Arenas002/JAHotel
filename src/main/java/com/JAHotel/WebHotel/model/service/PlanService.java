@@ -1,7 +1,6 @@
 package com.JAHotel.WebHotel.model.service;
 
-import com.JAHotel.WebHotel.model.domain.Alimentacion;
-import com.JAHotel.WebHotel.model.domain.Habitacion;
+
 import com.JAHotel.WebHotel.model.domain.Plan;
 import com.JAHotel.WebHotel.model.repository.PlanRepository;
 import org.springframework.beans.factory.annotation.Autowired;

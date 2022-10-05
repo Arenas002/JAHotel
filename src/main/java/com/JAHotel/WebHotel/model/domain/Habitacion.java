@@ -12,7 +12,9 @@ import java.util.List;
 @Entity
 @Data
 @Table(name = "HABITACION")
-public class Habitacion {
+public class Habitacion implements Serializable {
+
+    private static final long serialVersionUID = 1L;
 
 
 
@@ -29,10 +31,10 @@ public class Habitacion {
     @Column(name = "DISPONIBILIDAD")
     private Boolean disponibilidad;
 
-// RELACIONES
+// RELACIONES el backreference envia los datos
 
     @OneToMany(mappedBy = "habitacion")
-    @JsonManagedReference(value = "ID_HABITACION")
+    @JsonBackReference(value = "ID_HABITACION")
     private List<Plan> habitacion = new ArrayList<>();
 
 
