@@ -45,10 +45,20 @@ public class Plan implements Serializable {
     @JoinColumn(name="ID_ALIMENTACION",nullable = false, insertable = false,updatable = false)
     private Alimentacion alimentacion;
 
-    @ManyToOne(fetch = FetchType.EAGER, targetEntity = Habitacion.class)
-    @JsonManagedReference(value = "ID_HABITACION")
-    @JoinColumn(name="ID_HABITACION",nullable = false,insertable = false,updatable = false)
+    @ManyToOne(fetch = FetchType.LAZY, targetEntity = Habitacion.class, cascade = CascadeType.DETACH)
+    @JsonManagedReference(value = "habitaciones")
+    @JoinColumn(name="ID_HABITACION",nullable = false, insertable = false,updatable = false)
     private Habitacion habitacion;
+
+
+
+
+    @OneToMany(fetch = FetchType.LAZY ,mappedBy = "plan")
+    @JsonBackReference(value = "ID_PLAN")
+    private List<Huesped> huesped = new ArrayList<>();
+
+
+
 
 
 

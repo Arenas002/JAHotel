@@ -33,9 +33,9 @@ public class Habitacion implements Serializable {
 
 // RELACIONES el backreference envia los datos
 
-    @OneToMany(mappedBy = "habitacion")
-    @JsonBackReference(value = "ID_HABITACION")
-    private List<Plan> habitacion = new ArrayList<>();
+    @OneToMany(fetch = FetchType.EAGER ,mappedBy = "habitacion", targetEntity = Plan.class)
+    @JsonBackReference(value = "habitaciones")
+    private List<Plan> habitaciones = new ArrayList<>();
 
 
 

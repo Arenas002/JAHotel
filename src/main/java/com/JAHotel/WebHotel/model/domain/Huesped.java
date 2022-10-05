@@ -1,6 +1,7 @@
 package com.JAHotel.WebHotel.model.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
@@ -12,12 +13,16 @@ import java.util.Map;
 
 @Entity
 @Data
+@Table(name = "HUESPED")
+
 public class Huesped implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     @Id
     @Column(name = "ID", nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+
     private Integer Id;
 
     @Column(name = "IDENTIFICACION", nullable = false)
@@ -33,10 +38,10 @@ public class Huesped implements Serializable {
     private String correo;
 
     @Column(name = "ID_PlAN", nullable = false)
-    private String id_plan;
+    private Integer id_plan;
 
     @Column(name = "ID_PRODUCTO", nullable = false)
-    private String id_producto;
+    private Integer id_producto;
 
 // RELACIONES
 
@@ -52,7 +57,7 @@ public class Huesped implements Serializable {
 
 
 
-    @OneToMany(mappedBy = "huesped")
+    @OneToMany(fetch = FetchType.EAGER,mappedBy = "huesped")
     @JsonBackReference(value = "id_huesped")
     private List<Factura> factura = new ArrayList<>();
 }
