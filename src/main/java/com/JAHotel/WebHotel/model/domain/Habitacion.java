@@ -1,14 +1,13 @@
 package com.JAHotel.WebHotel.model.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Data
@@ -29,6 +28,12 @@ public class Habitacion {
 
     @Column(name = "DISPONIBILIDAD")
     private Boolean disponibilidad;
+
+// RELACIONES
+
+    @OneToMany(mappedBy = "habitacion")
+    @JsonManagedReference(value = "ID_HABITACION")
+    private List<Plan> habitacion = new ArrayList<>();
 
 
 
