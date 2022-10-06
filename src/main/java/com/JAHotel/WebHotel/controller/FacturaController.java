@@ -31,19 +31,19 @@ public class FacturaController {
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
 
-    @PostMapping(path ="/createFactura")
+    @PostMapping(path ="/api/v1/createFactura")
     public ResponseEntity<MyResponseUtility>crearFactura(@RequestBody Factura factura){
         response.data = facturaService.create(factura);
         return  new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
-    @PutMapping(path ="/ActualizarFactura/{id}")
+    @PutMapping(path ="api/v1/ActualizarFactura/{id}")
     public ResponseEntity<MyResponseUtility>actualizarFactura(@PathVariable(value = "id") Integer id,@RequestBody Factura factura){
         response.data = facturaService.update(id,factura);
         return  new ResponseEntity<>(response, HttpStatus.CREATED);
     }
 
-    @DeleteMapping(path = "/eliminarFactura/{id}")
+    @DeleteMapping(path = "api/v1/eliminarFactura/{id}")
     public ResponseEntity<MyResponseUtility>eliminarFactura(@PathVariable(value = "id") Integer id) {
     response.data = facturaService.delete(id);
     return new ResponseEntity<>(response, HttpStatus.OK);

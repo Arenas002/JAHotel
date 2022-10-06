@@ -29,8 +29,12 @@ public class FacturaService {
     }
 
     public Factura update(Integer id, Factura factura){
-    factura.setId(id);
-    return facturaRepository.save(factura);
+    var bill= facturaRepository.findById(id);
+    if(bill.isPresent()){
+       factura.setId(id);
+        facturaRepository.save(factura);
+    }
+    return bill.get();
     }
 
     public Factura delete(Integer id){

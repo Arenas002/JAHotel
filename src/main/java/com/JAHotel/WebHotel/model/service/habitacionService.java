@@ -25,8 +25,12 @@ public class habitacionService {
     }
 
     public Habitacion update(Integer id,Habitacion habitacion){
-        habitacion.setId(id);
-        return habitacionRepository.save(habitacion);
+        var room = habitacionRepository.findById(id);
+        if(room.isPresent()){
+            habitacion.setId(id);
+             habitacionRepository.save(habitacion);
+        }
+        return room.get();
     }
 
 }

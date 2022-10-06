@@ -28,8 +28,12 @@ public class ProductoService {
     }
 
     public Producto update(Integer id, Producto producto){
-        producto.setId(id);
-        return productoRepository.save(producto);
+        var product = productoRepository.findById(id);
+        if(product.isPresent()){
+            producto.setId(id);
+             productoRepository.save(producto);
+        }
+        return product.get();
     }
 
     public Producto delete(Integer id){

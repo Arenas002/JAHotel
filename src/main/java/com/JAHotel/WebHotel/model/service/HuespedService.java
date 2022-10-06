@@ -32,8 +32,12 @@ public class HuespedService {
     }
 
     public Huesped update(Integer id,Huesped huesped){
-        huesped.setId(id);
-        return huespedRepository.save(huesped);
+        var huespede = huespedRepository.findById(id);
+        if(huespede.isPresent()){
+            huesped.setId(id);
+            huespedRepository.save(huesped);
+        }
+        return huespede.get();
     }
 
     public Huesped delete(Integer id){
