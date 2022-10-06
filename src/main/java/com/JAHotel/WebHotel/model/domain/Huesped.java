@@ -1,7 +1,6 @@
 package com.JAHotel.WebHotel.model.domain;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 
@@ -13,8 +12,6 @@ import java.util.Map;
 
 @Entity
 @Data
-@Table(name = "HUESPED")
-
 public class Huesped implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -38,26 +35,26 @@ public class Huesped implements Serializable {
     private String correo;
 
     @Column(name = "ID_PlAN", nullable = false)
-    private Integer id_plan;
+    private String id_plan;
 
     @Column(name = "ID_PRODUCTO", nullable = false)
-    private Integer id_producto;
+    private String id_producto;
 
 // RELACIONES
 
     @ManyToOne(fetch = FetchType.EAGER,targetEntity = Producto.class)
-    @JsonManagedReference(value = "ID_PRODUCTO")
+   // @JsonManagedReference(value = "ID_PRODUCTO")
     @JoinColumn(name="ID_PRODUCTO",nullable = false, insertable = false,updatable = false)
     private Producto producto;
 
     @ManyToOne(fetch = FetchType.EAGER,targetEntity = Plan.class)
-    @JsonManagedReference(value = "ID_PlAN")
+    //@JsonManagedReference(value = "ID_PlAN")
     @JoinColumn(name="ID_PlAN",nullable = false, insertable = false,updatable = false)
     private Plan plan;
 
 
 
-    @OneToMany(fetch = FetchType.EAGER,mappedBy = "huesped")
+    @OneToMany(mappedBy = "huesped")
     @JsonBackReference(value = "id_huesped")
     private List<Factura> factura = new ArrayList<>();
 }

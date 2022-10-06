@@ -31,7 +31,7 @@ public class ProductoController {
         return new ResponseEntity<>(response,HttpStatus.OK);
     }
 
-    @PostMapping(path = "/api/v1/crearproducto")
+    @PostMapping(path = "/api/v1/create/producto")
     public ResponseEntity<MyResponseUtility> create(@RequestBody Producto producto){
         response.data = productoService.create(producto);
         return new ResponseEntity<>(response,HttpStatus.CREATED);

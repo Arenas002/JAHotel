@@ -10,6 +10,7 @@ import javax.persistence.*;
 public class Factura {
     @Id
     @Column(name = "ID",nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     @Column(name = "DETALLE")
@@ -19,7 +20,7 @@ public class Factura {
     private Integer valorFactura;
 
     @ManyToOne(fetch = FetchType.EAGER,targetEntity = Huesped.class)
-    @JsonManagedReference(value = "id_huesped")
+   // @JsonManagedReference(value = "id_huesped")
     @JoinColumn(name = "ID_HUESPED")
     private Huesped huesped;
 
