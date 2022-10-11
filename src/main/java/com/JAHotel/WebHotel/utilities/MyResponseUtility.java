@@ -7,7 +7,9 @@ public class MyResponseUtility {
 
     public Boolean error;
     public String message;
+    public String descriptionError;
     public Object data;
+
     /**
      * La clase MyResponseUtility es una clase que
      * permite generar un objeto de tipo MyResponse
@@ -15,6 +17,7 @@ public class MyResponseUtility {
     public MyResponseUtility() {
         this.error = false;
         this.message = "success";
+        this.descriptionError = "Error null";
         this.data = null;
     }
 
@@ -22,6 +25,7 @@ public class MyResponseUtility {
     public void restart() {
         error = false;
         message = "Success";
+        descriptionError = "Error null";
         data = null;
     }
 }

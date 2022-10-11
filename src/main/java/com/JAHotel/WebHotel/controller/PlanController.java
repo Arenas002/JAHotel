@@ -1,6 +1,6 @@
 package com.JAHotel.WebHotel.controller;
 
-import com.JAHotel.WebHotel.model.domain.Habitacion;
+
 import com.JAHotel.WebHotel.model.domain.Plan;
 import com.JAHotel.WebHotel.model.service.PlanService;
 import com.JAHotel.WebHotel.utilities.MyResponseUtility;

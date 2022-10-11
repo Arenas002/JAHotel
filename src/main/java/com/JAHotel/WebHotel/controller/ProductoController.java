@@ -4,9 +4,14 @@ import com.JAHotel.WebHotel.model.domain.Producto;
 import com.JAHotel.WebHotel.model.service.ProductoService;
 import com.JAHotel.WebHotel.utilities.MyResponseUtility;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+
+import javax.xml.crypto.Data;
+import java.util.Objects;
+import java.util.Optional;
 
 
 @RestController
@@ -27,7 +32,17 @@ public class ProductoController {
 
     @GetMapping(path ="/api/v1/producto/{id}")
     public ResponseEntity<MyResponseUtility> getProductById(@PathVariable(value = "id") Integer id){
-        response.data = productoService.getById(id);
+        try {
+            response.data = productoService.getById(id);
+        }catch (DataAccessException e){
+            response.message= ("Error al realizar la consulta en la base de datos");
+            response.descriptionError = (Objects.requireNonNull(e.getMessage()).concat(": ").concat(e.getMostSpecificCause().getMessage()));
+            return new ResponseEntity<>(response, HttpStatus.INTERNAL_SERVER_ERROR);
+        }
+        if(((Optional<?>) response.data).isEmpty()){
+            response.message = ("El Producto con` Id: ".concat(id.toString().concat(" no existe en la base de datos!")));
+            return new ResponseEntity<>(response, HttpStatus.NOT_FOUND);
+        }
         return new ResponseEntity<>(response,HttpStatus.OK);
     }
 
