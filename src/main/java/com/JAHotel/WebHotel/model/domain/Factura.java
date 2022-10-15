@@ -19,12 +19,15 @@ public class Factura {
     @Column(name = "VALOR",nullable = false)
     private Integer valorFactura;
 
-    @Column(name = "ID_HUESPED", nullable = false)
-    private Integer id_huesped;
 
-    @ManyToOne(fetch = FetchType.EAGER,targetEntity = Huesped.class)
-   // @JsonManagedReference(value = "id_huesped")
-    @JoinColumn(name = "ID_HUESPED",nullable = false, insertable = false,updatable = false)
-    private Huesped huesped;
+    @Column(name = "id_productoporhuesped", nullable = false, insertable = false,updatable = false)
+    private Integer productorPorHuesped;
+
+
+
+    @ManyToOne(fetch = FetchType.EAGER,targetEntity = ProductosPorHuesped.class)
+    // @JsonManagedReference(value = "id_huesped")
+    @JoinColumn(name = "id_productoporhuesped", nullable = false, insertable = false,updatable = false)
+    private ProductosPorHuesped productosPorHuesped;
 
 }

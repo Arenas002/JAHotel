@@ -37,15 +37,15 @@ public class Huesped implements Serializable {
     @Column(name = "ID_PlAN", nullable = false)
     private String id_plan;
 
-    @Column(name = "ID_PRODUCTO", nullable = false)
-    private String id_producto;
+//    @Column(name = "ID_PRODUCTO", nullable = false)
+//    private String id_producto;
 
 // RELACIONES
 
-    @ManyToOne(fetch = FetchType.EAGER,targetEntity = Producto.class)
-   // @JsonManagedReference(value = "ID_PRODUCTO")
-    @JoinColumn(name="ID_PRODUCTO",nullable = false, insertable = false,updatable = false)
-    private Producto producto;
+//    @ManyToOne(fetch = FetchType.EAGER,targetEntity = Producto.class)
+//   // @JsonManagedReference(value = "ID_PRODUCTO")
+//    @JoinColumn(name="ID_PRODUCTO",nullable = false, insertable = false,updatable = false)
+//    private Producto producto;
 
     @ManyToOne(fetch = FetchType.EAGER,targetEntity = Plan.class)
     //@JsonManagedReference(value = "ID_PlAN")
@@ -56,5 +56,5 @@ public class Huesped implements Serializable {
 
     @OneToMany(mappedBy = "huesped")
     @JsonBackReference(value = "id_huesped")
-    private List<Factura> factura = new ArrayList<>();
+    private List<ProductosPorHuesped> factura = new ArrayList<>();
 }

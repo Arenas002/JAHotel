@@ -24,7 +24,7 @@ public class Producto {
     @Column(name = "VALOR")
     private Integer valorProducto;
 
-    @OneToMany(mappedBy = "producto")
+    @OneToMany(mappedBy = "producto" )
     @JsonBackReference(value = "ID_PRODUCTO")
-    private List<Huesped> producto;
+    private List<ProductosPorHuesped> producto;
 }
